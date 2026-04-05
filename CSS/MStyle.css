@@ -166,6 +166,7 @@ body {
     letter-spacing: 1px;
     cursor: pointer;
     transition: var(--transition);
+    margin: 1px;
 }
 
 .filter-chip:hover {
@@ -179,6 +180,7 @@ body {
     color: var(--color-on-primary);
     transform: translateY(1px) scale(0.98);
     transition: all 0.1s ease; /* Fast response for the click */
+    margin: 1px;
 }
 
 /* --- Masonry Grid Logic --- */
