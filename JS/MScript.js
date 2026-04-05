@@ -7,16 +7,6 @@ const feedData = [
     { title: "Kinetic Branding Reel 2024", author: "Lina V.", cat: "Motion Design", type: "portfolio", img: "https://picsum.photos/400/500", avatar: "https://i.pravatar.cc/150?u=2" }
 ];
 
-function getProceduralSpan(post, user) {
-    const isRelational = post.cat === user.primaryField;
-    switch(post.type) {
-        case 'portfolio': return isRelational ? 'span-prominent-p' : 'span-p';
-        case 'resource': return isRelational ? 'span-prominent-r' : 'span-r';
-        case 'casting': return isRelational ? 'span-prominent-cc' : 'span-cc';
-        default: return 'span-p';
-    }
-}
-
 function renderFeed() {
     const grid = document.getElementById('main-feed');
     if (!grid) return;
@@ -25,10 +15,22 @@ function renderFeed() {
 
     feedData.forEach(post => {
         const card = document.createElement('div');
-        // Add both 'card' for styling and the dynamic span class for masonry
-        const spanClass = getProceduralSpan(post, userProfile);
-        card.className = `card ${spanClass}`;
+        card.className = 'card';
         
+        /* --- DYNAMIC HEIGHT CALCULATION --- */
+        let spanValue = 28; // Base height
+        if (post.type === 'portfolio') spanValue = 38;
+        if (post.type === 'casting') spanValue = 32;
+        
+        // If it matches the user's interest, boost the height
+        if (post.cat === userProfile.primaryField) {
+            spanValue += 12; 
+        }
+
+        // Apply the span directly to the style attribute
+        card.style.gridRowEnd = `span ${spanValue}`;
+        
+        /* --- HTML CONTENT --- */
         card.innerHTML = `
             ${post.img ? `
             <div class="card-media">
@@ -63,5 +65,4 @@ function renderFeed() {
     });
 }
 
-// Run the render
 document.addEventListener('DOMContentLoaded', renderFeed);
