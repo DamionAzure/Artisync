@@ -213,6 +213,7 @@ body {
     overflow: hidden;
     background: var(--color-surface-lowest);
     flex: 1; /* Makes the image area expand to fill the span */
+    flex-grow: 1;
     min-height: 0;
 }
 
