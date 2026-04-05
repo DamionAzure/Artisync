@@ -66,3 +66,34 @@ function renderFeed() {
 }
 
 document.addEventListener('DOMContentLoaded', renderFeed);
+
+function resizeGridItem(item) {
+    const grid = document.getElementById('main-feed');
+    const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+    const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-gap'));
+    
+    // Calculate how many 10px rows the content actually needs
+    const rowSpan = Math.ceil((item.querySelector('.card-info').getBoundingClientRect().height + 
+                               (item.querySelector('.card-media')?.getBoundingClientRect().height || 0) + 
+                               rowGap) / (rowHeight + rowGap));
+    
+    item.style.gridRowEnd = "span " + rowSpan;
+}
+
+// Update your loop in renderFeed to call this:
+feedData.forEach(post => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    
+    // ... (your innerHTML logic) ...
+    
+    grid.appendChild(card);
+    
+    // If there's an image, wait for it to load before calculating size
+    const img = card.querySelector('img');
+    if (img) {
+        img.onload = () => resizeGridItem(card);
+    } else {
+        resizeGridItem(card);
+    }
+});
