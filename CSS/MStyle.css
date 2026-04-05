@@ -162,12 +162,12 @@ body {
     transition: var(--transition);
 }
 
-.filter-chip :hover {
+.filter-chip:hover {
     background: var(--color-surface-high);
     color: #ffeaea;
 }
 
-.filter-chip :active {
+.filter-chip:active {
     background: var(--color-surface-high);
     color: #fff;
 }
