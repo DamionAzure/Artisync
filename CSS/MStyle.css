@@ -175,8 +175,10 @@ body {
 }
 
 .filter-chip:active {
-    background: var(--color-surface-high);
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    transform: translateY(1px) scale(0.98);
+    transition: all 0.1s ease; /* Fast response for the click */
 }
 
 /* --- Masonry Grid Logic --- */
