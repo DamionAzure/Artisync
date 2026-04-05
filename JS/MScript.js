@@ -7,6 +7,26 @@ const feedData = [
     { title: "Kinetic Branding Reel 2024", author: "Lina V.", cat: "Motion Design", type: "portfolio", img: "https://picsum.photos/400/500", avatar: "https://i.pravatar.cc/150?u=2" }
 ];
 
+// 1. The Dynamic Resizer (The "Shrink to Fit" engine)
+function resizeGridItem(item) {
+    const grid = document.getElementById('main-feed');
+    if (!grid) return;
+
+    // Get the grid row height (10px) and gap (24px) from your CSS
+    const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+    const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-gap'));
+    
+    // Measure total height of internal content
+    const contentHeight = item.querySelector('.card-info').offsetHeight + 
+                         (item.querySelector('.card-media')?.offsetHeight || 0);
+
+    // Calculate how many spans are needed
+    const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
+    
+    item.style.gridRowEnd = `span ${rowSpan}`;
+}
+
+// 2. The Main Render Function
 function renderFeed() {
     const grid = document.getElementById('main-feed');
     if (!grid) return;
@@ -17,20 +37,7 @@ function renderFeed() {
         const card = document.createElement('div');
         card.className = 'card';
         
-        /* --- DYNAMIC HEIGHT CALCULATION --- */
-        let spanValue = 28; // Base height
-        if (post.type === 'portfolio') spanValue = 38;
-        if (post.type === 'casting') spanValue = 32;
-        
-        // If it matches the user's interest, boost the height
-        if (post.cat === userProfile.primaryField) {
-            spanValue += 12; 
-        }
-
-        // Apply the span directly to the style attribute
-        card.style.gridRowEnd = `span ${spanValue}`;
-        
-        /* --- HTML CONTENT --- */
+        // Build the HTML
         card.innerHTML = `
             ${post.img ? `
             <div class="card-media">
@@ -42,7 +49,6 @@ function renderFeed() {
                     </div>
                 </div>
             </div>` : ''}
-
             <div class="card-info">
                 ${post.type === 'casting' ? `
                     <div class="job-header">
@@ -61,39 +67,23 @@ function renderFeed() {
                 `}
             </div>
         `;
+
         grid.appendChild(card);
+
+        // 3. Trigger Resize
+        const img = card.querySelector('img');
+        if (img) {
+            // Wait for image to load to get its actual height
+            img.addEventListener('load', () => resizeGridItem(card));
+        } else {
+            // No image (like Casting Calls), resize immediately
+            resizeGridItem(card);
+        }
     });
 }
 
+// 4. Initialize and handle window resizing
 document.addEventListener('DOMContentLoaded', renderFeed);
-
-function resizeGridItem(item) {
-    const grid = document.getElementById('main-feed');
-    const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-    const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-gap'));
-    
-    // Calculate how many 10px rows the content actually needs
-    const rowSpan = Math.ceil((item.querySelector('.card-info').getBoundingClientRect().height + 
-                               (item.querySelector('.card-media')?.getBoundingClientRect().height || 0) + 
-                               rowGap) / (rowHeight + rowGap));
-    
-    item.style.gridRowEnd = "span " + rowSpan;
-}
-
-// Update your loop in renderFeed to call this:
-feedData.forEach(post => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    
-    // ... (your innerHTML logic) ...
-    
-    grid.appendChild(card);
-    
-    // If there's an image, wait for it to load before calculating size
-    const img = card.querySelector('img');
-    if (img) {
-        img.onload = () => resizeGridItem(card);
-    } else {
-        resizeGridItem(card);
-    }
+window.addEventListener('resize', () => {
+    document.querySelectorAll('.card').forEach(resizeGridItem);
 });
