@@ -1,0 +1,377 @@
+/* --- Core Reset & Variables --- */
+:root {
+    --color-bg: #131313;
+    --color-surface: #201f1f;
+    --color-surface-high: #2a2a2a;
+    --color-surface-lowest: #0e0e0e;
+    --color-primary: #ffb4a8;
+    --color-on-primary: #690100;
+    --color-brand-red: #FF0000;
+    --color-text: #e5e2e1;
+    --color-text-dim: #9ca3af;
+    --color-outline: rgba(177, 135, 128, 0.2);
+    
+    --font-head: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Material Icons Config --- */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+.material-symbols-outlined.filled {
+    font-variation-settings: 'FILL' 1;
+}
+
+/* --- Navigation --- */
+.top-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 64px;
+    background: rgba(19, 19, 19, 0.7);
+    backdrop-filter: blur(16px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.logo {
+    color: var(--color-brand-red);
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-item:hover { color: #fff; }
+
+.nav-item.active {
+    color: var(--color-brand-red);
+    border-bottom: 2px solid var(--color-brand-red);
+    padding-bottom: 4px;
+}
+
+.search-bar {
+    background: var(--color-surface-lowest);
+    border: 1px solid var(--color-outline);
+    border-radius: 50px;
+    padding: 6px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 0.85rem;
+    width: 180px;
+}
+
+.btn-post {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border: none;
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-post:hover { transform: scale(1.05); }
+
+/* --- Content Layout --- */
+.main-content {
+    margin-top: 80px;
+    padding: 24px;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filter-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.filter-chip {
+    white-space: nowrap;
+    padding: 8px 20px;
+    border-radius: 50px;
+    background: var(--color-surface);
+    color: var(--color-text-dim);
+    border: none;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-chip.active {
+    background: var(--color-surface-high);
+    color: #fff;
+}
+
+/* --- Masonry Grid Logic --- */
+.masonry-grid {
+    column-count: 2;
+    column-gap: 24px;
+}
+
+.card {
+    break-inside: avoid;
+    margin-bottom: 24px;
+    background: var(--color-surface-high);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.card:hover { transform: translateY(-6px); }
+
+.card-media {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface-lowest);
+}
+
+.card-media img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.card:hover .card-media img { transform: scale(1.08); }
+
+.card-media.tall { aspect-ratio: 3/4; }
+.card-media.landscape { aspect-ratio: 16/10; }
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.card:hover .card-overlay { opacity: 1; }
+
+.overlay-actions {
+    display: flex;
+    gap: 12px;
+    color: white;
+}
+
+/* --- Card Typography & Info --- */
+.card-info { padding: 20px; }
+
+.author-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,180,168,0.2);
+}
+
+.author-name { font-weight: 600; font-size: 0.9rem; }
+
+.category-tag {
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    letter-spacing: 1px;
+}
+
+.item-title {
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+/* --- Job Card Styles --- */
+.job-card { border: 1px solid rgba(255,180,168,0.1); }
+.job-content { padding: 24px; }
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.job-icon-bg {
+    background: rgba(255, 85, 64, 0.1);
+    color: var(--color-primary);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.job-badge {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(255, 180, 168, 0.1);
+    color: var(--color-primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.job-title { font-family: var(--font-head); font-size: 1.25rem; margin-bottom: 8px; }
+.job-description { font-size: 0.9rem; color: var(--color-text-dim); margin-bottom: 20px; }
+
+.job-meta { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--color-text-dim); }
+
+.btn-apply {
+    width: 100%;
+    padding: 14px;
+    background: var(--color-brand-red);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* --- Pagination --- */
+.load-more-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+.btn-load-more {
+    background: var(--color-surface-high);
+    border: 1px solid var(--color-outline);
+    color: var(--color-text-dim);
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* --- Mobile Navigation Bar --- */
+.mobile-nav {
+    display: none; /* Desktop hidden */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 72px;
+    background: rgba(19, 19, 19, 0.85);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--color-outline);
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2000;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mobile-nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-dim);
+}
+
+.mobile-nav-link span:last-child {
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.mobile-nav-link.active { color: var(--color-brand-red); }
+
+.btn-fab {
+    background: var(--color-primary-container);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    color: var(--color-on-primary);
+    margin-top: -30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .masonry-grid { column-count: 1; }
+    .nav-links, .search-bar { display: none; }
+    .mobile-nav { display: flex; }
+    .main-content { margin-top: 60px; padding: 16px; }
+}

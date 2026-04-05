@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>LikHub | Creative Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link rel="stylesheet" href="../CSS/MStyle.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <span class="logo">LikHub</span>
+                <div class="nav-links">
+                    <a href="#" class="nav-item active">Feed</a>
+                    <a href="#" class="nav-item">Portfolios</a>
+                    <a href="#" class="nav-item">Resources</a>
+                    <a href="#" class="nav-item">Casting Calls</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="search-bar">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search creators...">
+                </div>
+                <button class="btn-post">Post</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="filter-container">
+            <button class="filter-chip active">All Activity</button>
+            <button class="filter-chip">3D Art</button>
+            <button class="filter-chip">Motion Design</button>
+            <button class="filter-chip">Concept Art</button>
+            <button class="filter-chip">Tutorials</button>
+        </div>
+
+        <div class="masonry-grid">
+            
+            <div class="card">
+                <div class="card-media tall">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfpA1NQWppnlgaQngPVSBz0Ukk6m1ZkN2NVuqxv6I4Nuh7nIhnDBsrhutG_uUF3i2E2ohD2HyIeyjL3ue8Teke0nP83JUn-9R_TiCOCP_7paAH59dKPGQqiEvhROmm8FN7BQIFWYN5vH3GuT6BXcFYJWzXm1XDUvOFh1gYEp1j05EgZwa4QTqDeXzV5916GZ6zpSdYCY58USEe0nxe7jdRPglBsHmKpRNDGJ9lwI6a0S-30NH_z4K0O7rb6CfEuZSaoUp8iolPObh1" alt="3D Abstract Rendering">
+                    <div class="card-overlay">
+                        <div class="overlay-actions">
+                            <span class="material-symbols-outlined">favorite</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <div class="author-row">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtXOt-ikRT11Ad-VSsahdnK3vsLz1K2-5pGBLBMdgQigTUBR13pfwFi4lzGOCMnKznlAwx2W-foeQ0SuXiuyQe6S24GuZFU6hiaNxQzoveIoYHu07vOIPUogwYVL7NpQR7xXgMtG5JzhA8-mmcq5PHk-3Hm27ErY9xa4peXYKDr69-jkQa3xYyb6TtLZgeyGucFNqgdaLeMaoDPSEMPBtLlLElOrJ2sZPAkNDAuuw_L-7iYsPACAnY6OGx5Rxa1EoX__dl5563Jwv1" class="avatar" alt="Aris Thorne">
+                        <span class="author-name">Aris Thorne</span>
+                        <span class="category-tag">Portfolio</span>
+                    </div>
+                    <h3 class="item-title">Ethereal Displacement v.04</h3>
+                </div>
+            </div>
+
+            <div class="card job-card">
+                <div class="job-content">
+                    <div class="job-header">
+                        <div class="job-icon-bg">
+                            <span class="material-symbols-outlined">campaign</span>
+                        </div>
+                        <span class="job-badge">Open Call</span>
+                    </div>
+                    <h3 class="job-title">Lead Character Designer</h3>
+                    <p class="job-description">Looking for a stylist visionary for an unannounced AAA cyberpunk title. Remote / Hybrid. 6 month contract.</p>
+                    <div class="job-meta">
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined">payments</span>
+                            <span>$8k - $12k / Monthly</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined">location_on</span>
+                            <span>Tokyo / Remote</span>
+                        </div>
+                    </div>
+                    <button class="btn-apply">Apply Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-media landscape">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4NXxRnkZEosFQ90DOV20ZFAU6ce5NLNk7me0UCGDHPZcs4gMgXi0VTLPdO2IjJJ1TJzEV-Ge4T9X90lZzWV5_dHxCBLnoicPXySp7V0aTq8_Zy2NoSLKIHs3v1xqv58m4o1eKXlHBIBE3WBtvz-9jj9E3BTvlfl70nxBiycXGuJHyyLFBjSb_Oj3rl7r0aSnVXZLXRD4ZaqDtv3oSxljbcFyE6q12bWBb5BJ-FWGEMyaj85UPaylOVDzH8LHvH3R8mvDeF4Dpe40R" alt="Texture Pack">
+                    <span class="premium-badge">Premium Asset</span>
+                </div>
+                <div class="card-info">
+                    <div class="resource-header">
+                        <span class="category-tag">Resource Pack</span>
+                        <div class="rating">
+                            <span class="material-symbols-outlined filled">star</span>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <h3 class="item-title">Brutalist Concrete PBR Pack</h3>
+                    <div class="price-row">
+                        <span class="price">$24.00</span>
+                        <button class="icon-btn"><span class="material-symbols-outlined">download</span></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="load-more-section">
+            <button class="btn-load-more">
+                Load More Projects
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+            </button>
+        </div>
+    </main>
+
+    <nav class="mobile-nav">
+        <a href="#" class="mobile-nav-link active">
+            <span class="material-symbols-outlined filled-icon">grid_view</span>
+            <span>Feed</span>
+        </a>
+        <a href="#" class="mobile-nav-link">
+            <span class="material-symbols-outlined">search</span>
+            <span>Search</span>
+        </a>
+        <div class="mobile-center-action">
+            <button class="btn-fab"><span class="material-symbols-outlined">post_add</span></button>
+        </div>
+        <a href="#" class="mobile-nav-link">
+            <span class="material-symbols-outlined">notifications</span>
+            <span>Alerts</span>
+        </a>
+        <a href="#" class="mobile-nav-link">
+            <span class="material-symbols-outlined">person</span>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+</body>
+</html>
