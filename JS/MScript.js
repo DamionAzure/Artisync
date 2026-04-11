@@ -6,7 +6,8 @@ const feedData = [
     { title: "Brutalist Concrete PBR Pack", author: "Marc Russo", cat: "Resources", type: "resource", img: "https://picsum.photos/400/300", price: "$24.00" },
     { title: "Kinetic Branding Reel 2024", author: "Lina V.", cat: "Motion Design", type: "portfolio", img: "https://picsum.photos/400/500", avatar: "https://i.pravatar.cc/150?u=2" },
     { title: "Lead Character Voice Acting", author: "Galunggong Corporation", cat: "Voice Acting", type: "casting", desc: "N/A", img: null },
-    { title: "Material Brushes Highlights 2023", author: "Lon H.", cat: "3D Art", type: "portfolio", img: "https://picsum.photos/400/500", avatar: "https://i.pravatar.cc/150?u=3" }
+    { title: "Material Brushes Highlights 2023", author: "Lon H.", cat: "3D Art", type: "portfolio", img: "https://picsum.photos/500/700", avatar: "https://i.pravatar.cc/150?u=3" }
+    { title: "QA Position", author: "BumpyRoads Studio", cat: "Misc", type: "casting", desc: "Pls", img: null },
 ];
 
 // 1. The Dynamic Resizer (The "Shrink to Fit" engine)
