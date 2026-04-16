@@ -177,7 +177,7 @@ body {
 .filter-chip:active {
     background-color: var(--color-primary);
     color: var(--color-on-primary);
-    transform: translateY(1px) scale(0.98);
+    transform: translateY(2px);
     transition: all 0.1s ease; /* Fast response for the click */
 }
 
