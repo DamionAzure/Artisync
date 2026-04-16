@@ -128,7 +128,10 @@ body {
     transition: var(--transition);
 }
 
-.btn-post:hover { transform: scale(1.05); }
+.btn-post:hover { 
+    transform: translateY(-2px); /* Lifts the button up */
+    filter: brightness(1.1); /* Makes it slightly glow */
+}
 
 /* --- Content Layout --- */
 .main-content {
